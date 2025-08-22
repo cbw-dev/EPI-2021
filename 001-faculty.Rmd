@@ -73,7 +73,7 @@ His main focus is developing pipelines and data wrangling for ICGC-ARGO
 
 #### BF Francis Ouellette
 
-<img src="./img/faculty/edmund-su.png" width="200" alt="Photo of Edmund Su">
+<img src="./img/faculty/francis-ouellette.png" width="200" alt="Photo of Edmund Su">
 
 >Scientific Director <br>
 Canadian Bioinformatics Workshops (CBW) <br>
@@ -89,7 +89,7 @@ help our understanding of biology.
 
 #### Rachade Hmamouchi
 
-<img src="./img/faculty/edmund-su.png" width="200" alt="Photo of Edmund Su">
+<img src="./img/faculty/rachade-hmamouchi.png" width="200" alt="Photo of Edmund Su">
 
 >Program Manager <br>
 Canadian Bioinformatics Workshops (CBW) <br>
