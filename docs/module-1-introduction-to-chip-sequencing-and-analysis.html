@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Module 1: Introduction to ChIP Sequencing and Analysis | Epigenomic Analysis 2021</title>
+  <meta name="description" content="Workshop website for the 2021 Epigenomic Analysis Canadian Bioinformatics Workshop" />
+  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Module 1: Introduction to ChIP Sequencing and Analysis | Epigenomic Analysis 2021" />
+  <meta property="og:type" content="book" />
+  <meta property="og:image" content="https://bioinformaticsdotca.github.io/EPI_2021/img/bioinformatics_logo.png" />
+  <meta property="og:description" content="Workshop website for the 2021 Epigenomic Analysis Canadian Bioinformatics Workshop" />
+  <meta name="github-repo" content="bioinformaticsdotca/EPI_2021" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Module 1: Introduction to ChIP Sequencing and Analysis | Epigenomic Analysis 2021" />
+  
+  <meta name="twitter:description" content="Workshop website for the 2021 Epigenomic Analysis Canadian Bioinformatics Workshop" />
+  <meta name="twitter:image" content="https://bioinformaticsdotca.github.io/EPI_2021/img/bioinformatics_logo.png" />
+
+<meta name="author" content="Faculty: Guillaume Bourque, Martin Hirst, David Bujold, Jose Hector Galvez, Edmund Su, BF Francis Ouellette, Rachade Hmamouchi" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+<link rel="prev" href="compute-setup.html"/>
+<link rel="next" href="module-2.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LearningResource",
+  "name": "Epigenomics Analysis 2021",
+  "description": "The complete set of tutorials, slides, and practical exercises for the Epigenomics Analysis 2021 Canadian Bioinformatics Workshop, hosted on GitHub Pages.",
+  "url": "https://bioinformaticsdotca.github.io/EPI_2021",
+  "learningResourceType": ["tutorial", "slides", "exercise"],
+  "inLanguage": "en",
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "provider": {
+    "@type": "Organization",
+    "name": "Bioinformatics.ca",
+    "url": "https://bioinformatics.ca"
+  },
+  "keywords": "",
+  "isPartOf": {
+    "@type": "Course",
+    "@id": "http://bioinformaticsdotca.github.io/EPI_2021"
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<a href="https://bioinformaticsdotca.github.io/">
+ <img src="img/bioinformatics_logo.png" width="90%" alt="bioinformatics.ca logo" style="display:block; margin-left:auto; margin-right:auto; margin-top:15px;">
+ </a>
+<li><center><strong><a href="./"><br>Epigenomic Analysis<br><br></a></strong></center></li>
+<a href="./">
+ <img src="img/CBW_Epigenome-data_icon.png" width="70%" alt="Epigenomic Analysis logo" style="display:block; margin-left:auto; margin-right:auto; ">
+ </a>
+<br>
+
+<li class="divider"></li>
+<li class="part"><span><b>I Introduction</b></span></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Workshop Info</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#pre-work"><i class="fa fa-check"></i>Pre-work</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#schedule"><i class="fa fa-check"></i>Schedule</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="meet-your-faculty.html"><a href="meet-your-faculty.html"><i class="fa fa-check"></i>Meet Your Faculty</a></li>
+<li class="chapter" data-level="" data-path="compute-setup.html"><a href="compute-setup.html"><i class="fa fa-check"></i>Compute Setup</a></li>
+<li class="part"><span><b>II Modules</b></span></li>
+<li class="chapter" data-level="" data-path="module-1-introduction-to-chip-sequencing-and-analysis.html"><a href="module-1-introduction-to-chip-sequencing-and-analysis.html"><i class="fa fa-check"></i>Module 1: Introduction to ChIP Sequencing and Analysis</a>
+<ul>
+<li class="chapter" data-level="" data-path="module-1-introduction-to-chip-sequencing-and-analysis.html"><a href="module-1-introduction-to-chip-sequencing-and-analysis.html#lecture"><i class="fa fa-check"></i>Lecture</a></li>
+<li class="chapter" data-level="" data-path="module-1-introduction-to-chip-sequencing-and-analysis.html"><a href="module-1-introduction-to-chip-sequencing-and-analysis.html#lab"><i class="fa fa-check"></i>Lab</a>
+<ul>
+<li class="chapter" data-level="" data-path="module-1-introduction-to-chip-sequencing-and-analysis.html"><a href="module-1-introduction-to-chip-sequencing-and-analysis.html#common-tools-of-the-trade"><i class="fa fa-check"></i>Common Tools of the Trade</a></li>
+<li class="chapter" data-level="" data-path="module-1-introduction-to-chip-sequencing-and-analysis.html"><a href="module-1-introduction-to-chip-sequencing-and-analysis.html#module-1.-bwa-alignment-bam-post-processing"><i class="fa fa-check"></i>Module 1. BWA Alignment + BAM Post-processing</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="module-2.html"><a href="module-2.html"><i class="fa fa-check"></i>Module 2</a>
+<ul>
+<li class="chapter" data-level="" data-path="module-2.html"><a href="module-2.html#lecture-1"><i class="fa fa-check"></i>Lecture</a></li>
+<li class="chapter" data-level="" data-path="module-2.html"><a href="module-2.html#lab-1"><i class="fa fa-check"></i>Lab</a>
+<ul>
+<li class="chapter" data-level="" data-path="module-2.html"><a href="module-2.html#module-2.-peak-calling"><i class="fa fa-check"></i>Module 2. Peak Calling</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="module-3.html"><a href="module-3.html"><i class="fa fa-check"></i>Module 3</a>
+<ul>
+<li class="chapter" data-level="" data-path="module-3.html"><a href="module-3.html#lecture-2"><i class="fa fa-check"></i>Lecture</a></li>
+<li class="chapter" data-level="" data-path="module-3.html"><a href="module-3.html#lab-2"><i class="fa fa-check"></i>Lab</a>
+<ul>
+<li class="chapter" data-level="" data-path="module-3.html"><a href="module-3.html#visualization"><i class="fa fa-check"></i>3. Visualization</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="module-4.html"><a href="module-4.html"><i class="fa fa-check"></i>Module 4</a>
+<ul>
+<li class="chapter" data-level="" data-path="module-4.html"><a href="module-4.html#lecture-3"><i class="fa fa-check"></i>Lecture</a></li>
+<li class="chapter" data-level="" data-path="module-4.html"><a href="module-4.html#lab-3"><i class="fa fa-check"></i>Lab</a>
+<ul>
+<li class="chapter" data-level="" data-path="module-4.html"><a href="module-4.html#introduction"><i class="fa fa-check"></i>1. Introduction</a></li>
+<li class="chapter" data-level="" data-path="module-4.html"><a href="module-4.html#mapping-tutorial"><i class="fa fa-check"></i>2. Mapping Tutorial</a></li>
+<li class="chapter" data-level="" data-path="module-4.html"><a href="module-4.html#differential-methylation-analysis-in-methylkit"><i class="fa fa-check"></i>3. Differential Methylation Analysis in MethylKit</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="module-5-downstream-analyses-integrative-tools.html"><a href="module-5-downstream-analyses-integrative-tools.html"><i class="fa fa-check"></i>Module 5: Downstream Analyses &amp; Integrative Tools</a>
+<ul>
+<li class="chapter" data-level="" data-path="module-5-downstream-analyses-integrative-tools.html"><a href="module-5-downstream-analyses-integrative-tools.html#lecture-4"><i class="fa fa-check"></i>Lecture</a></li>
+<li class="chapter" data-level="" data-path="module-5-downstream-analyses-integrative-tools.html"><a href="module-5-downstream-analyses-integrative-tools.html#lab-4"><i class="fa fa-check"></i>Lab</a>
+<ul>
+<li class="chapter" data-level="" data-path="module-5-downstream-analyses-integrative-tools.html"><a href="module-5-downstream-analyses-integrative-tools.html#introduction-1"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="module-5-downstream-analyses-integrative-tools.html"><a href="module-5-downstream-analyses-integrative-tools.html#lab-part-1"><i class="fa fa-check"></i>Lab Part 1</a></li>
+<li class="chapter" data-level="" data-path="module-5-downstream-analyses-integrative-tools.html"><a href="module-5-downstream-analyses-integrative-tools.html#ihec-data-portal"><i class="fa fa-check"></i>IHEC Data Portal</a></li>
+<li class="chapter" data-level="" data-path="module-5-downstream-analyses-integrative-tools.html"><a href="module-5-downstream-analyses-integrative-tools.html#predicting-motifs-with-homer"><i class="fa fa-check"></i>Predicting Motifs with HOMER</a></li>
+<li class="chapter" data-level="" data-path="module-5-downstream-analyses-integrative-tools.html"><a href="module-5-downstream-analyses-integrative-tools.html#looking-for-go-terms-enrichment-with-great"><i class="fa fa-check"></i>Looking for GO Terms Enrichment with GREAT</a></li>
+<li class="chapter" data-level="" data-path="module-5-downstream-analyses-integrative-tools.html"><a href="module-5-downstream-analyses-integrative-tools.html#going-back-to-homer-results"><i class="fa fa-check"></i>Going back to HOMER Results</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<h1 id="sponsors">Sponsors</h1>
+<center>
+<a href="https://www.cihr-irsc.gc.ca"><img src="img/sponsors/cihr.png" width=90% style="padding-bottom: 20px" alt="Canadian Institutes of Health Research logo."></a>
+
+<a href="https://genomecanada.ca/"><img src="img/sponsors/genomecanada.png" height="55" style="display:inline-block;"  style="padding-bottom: 20px" alt="Genome Canada logo.">
+<a href="https://www.ontariogenomics.ca/"><img src="img/sponsors/ontariogenomics.png" height="55" style="display:inline-block;" style="padding-bottom: 20px;" alt="Ontario Genomics logo.">
+<br><br>
+<a href="https://oicr.on.ca/"><img src="img/sponsors/oicr.png" width=35% style="display:inline-block;" style="padding-bottom: 20px" alt="Ontario Institute for Cancer Research logo.">
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Epigenomic Analysis 2021</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="module-1-introduction-to-chip-sequencing-and-analysis" class="section level1 hasAnchor">
+<h1>Module 1: Introduction to ChIP Sequencing and Analysis<a href="module-1-introduction-to-chip-sequencing-and-analysis.html#module-1-introduction-to-chip-sequencing-and-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="lecture" class="section level2 hasAnchor">
+<h2>Lecture<a href="module-1-introduction-to-chip-sequencing-and-analysis.html#lecture" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<iframe src="https://drive.google.com/file/d/1JOF-Ri0mvZDfeL2k3ayEs2WqS3ZkBd0e/preview" width="640" height="480" allow="autoplay">
+</iframe>
+</div>
+<div id="lab" class="section level2 hasAnchor">
+<h2>Lab<a href="module-1-introduction-to-chip-sequencing-and-analysis.html#lab" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="common-tools-of-the-trade" class="section level3 hasAnchor">
+<h3>Common Tools of the Trade<a href="module-1-introduction-to-chip-sequencing-and-analysis.html#common-tools-of-the-trade" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="explaination-of-tools" class="section level4 hasAnchor">
+<h4>Explaination of Tools<a href="module-1-introduction-to-chip-sequencing-and-analysis.html#explaination-of-tools" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><a href="http://bio-bwa.sourceforge.net/bwa.shtml">BWA</a> Genomic Sequence Read alignment tool</p>
+<p><a href="https://broadinstitute.github.io/picard/">PICARD</a> Toolkit for BAM file manipulation</p>
+<p><a href="http://www.htslib.org/doc/samtools.html">SAMTOOLS</a> Toolkit for BAM file manipulation</p>
+<p><a href="https://bedtools.readthedocs.io/en/latest/index.html">BEDTOOLSToolkit</a> for BED/BEDGRAPH file manipulation</p>
+<p><a href="https://github.com/macs3-project/MACS">MACS2</a> Enriched region identifier for ChIP-seq</p>
+<p>[UCSCtools])(<a href="http://genome.ucsc.edu/goldenPath/help/bigWig.html" class="uri">http://genome.ucsc.edu/goldenPath/help/bigWig.html</a>) Manipulation of Wigs and Bed/Bedgraph to binary forms</p>
+</div>
+<div id="resource-files" class="section level4 hasAnchor">
+<h4>Resource Files<a href="module-1-introduction-to-chip-sequencing-and-analysis.html#resource-files" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ol style="list-style-type: decimal">
+<li>BWA INDEX:</li>
+</ol>
+<ul>
+<li>~/CourseData/EPI_data/Module1/BWA_index/</li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>Enhancer file.bed:</li>
+</ol>
+<ul>
+<li>~/CourseData/EPI_data/Module1/QC_resources/</li>
+<li>download various state7 and merge <a href="https://egg2.wustl.edu/roadmap/data/byFileType/chromhmmSegmentations/ChmmModels/coreMarks/jointModel/final/" class="uri">https://egg2.wustl.edu/roadmap/data/byFileType/chromhmmSegmentations/ChmmModels/coreMarks/jointModel/final/</a></li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li>TSS.bed:</li>
+</ol>
+<ul>
+<li>~/CourseData/EPI_data/Module1/QC_resources/</li>
+<li>Generated by downloading Ensemblv79 GTF convert to Bed +/-2kb of TSS. See <a href="https://www.biostars.org/p/56280/" class="uri">https://www.biostars.org/p/56280/</a></li>
+</ul>
+<ol start="4" style="list-style-type: decimal">
+<li>HOX regions.bed</li>
+</ol>
+<ul>
+<li>~/CourseData/EPI_data/Module1/QC_resources/</li>
+<li>Generated by downloading Ensemblv79 GTF convert to Bed then selecting for HOX</li>
+</ul>
+<p>Hg38 Black list regions
+- ~/CourseData/EPI_data/Module1/QC_resources/
+- <a href="https://www.encodeproject.org/files/ENCFF356LFX/@@download/ENCFF356LFX.bed.gz" class="uri">https://www.encodeproject.org/files/ENCFF356LFX/@@download/ENCFF356LFX.bed.gz</a></p>
+</div>
+<div id="resource-files-1" class="section level4 hasAnchor">
+<h4>Resource Files<a href="module-1-introduction-to-chip-sequencing-and-analysis.html#resource-files-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ol style="list-style-type: decimal">
+<li>CEMT Pooled Breast Basal</li>
+</ol>
+<ul>
+<li>~/CourseData/EPI_data/Module1/CHEERC_resources</li>
+<li><a href="https://epigenomesportal.ca/tracks/CEEHRC/hg38/69069.CEEHRC.CEMT0035.H3K27ac.peak_calls.bigBed" class="uri">https://epigenomesportal.ca/tracks/CEEHRC/hg38/69069.CEEHRC.CEMT0035.H3K27ac.peak_calls.bigBed</a></li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>CEMT Pooled Breast Basal</li>
+</ol>
+<ul>
+<li><a href="https://epigenomesportal.ca/tracks/CEEHRC/hg38/69067.CEEHRC.CEMT0035.H3K27ac.signal_unstranded.bigWig" class="uri">https://epigenomesportal.ca/tracks/CEEHRC/hg38/69067.CEEHRC.CEMT0035.H3K27ac.signal_unstranded.bigWig</a></li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li>CEMT Pooled Breast Basal</li>
+</ol>
+<ul>
+<li>~/CourseData/EPI_data/Module1/CHEERC_resources
+<a href="https://epigenomesportal.ca/tracks/CEEHRC/hg38/69063.CEEHRC.CEMT0035.H3K27me3.peak_calls.bigBed" class="uri">https://epigenomesportal.ca/tracks/CEEHRC/hg38/69063.CEEHRC.CEMT0035.H3K27me3.peak_calls.bigBed</a></li>
+</ul>
+<ol start="4" style="list-style-type: decimal">
+<li>CEMT Pooled Breast Basal</li>
+</ol>
+<ul>
+<li><a href="https://epigenomesportal.ca/tracks/CEEHRC/hg38/69061.CEEHRC.CEMT0035.H3K27me3.signal_unstranded.bigWig" class="uri">https://epigenomesportal.ca/tracks/CEEHRC/hg38/69061.CEEHRC.CEMT0035.H3K27me3.signal_unstranded.bigWig</a></li>
+</ul>
+<ol start="5" style="list-style-type: decimal">
+<li>CEMT Pooled Breast Basal</li>
+</ol>
+<ul>
+<li>~/CourseData/EPI_data/Module1/CHEERC_resources
+<a href="https://epigenomesportal.ca/tracks/CEEHRC/hg38/69054.CEEHRC.CEMT0035.H3K4me1.peak_calls.bigBed" class="uri">https://epigenomesportal.ca/tracks/CEEHRC/hg38/69054.CEEHRC.CEMT0035.H3K4me1.peak_calls.bigBed</a></li>
+</ul>
+<ol start="6" style="list-style-type: decimal">
+<li>CEMT Pooled Breast Basal</li>
+</ol>
+<ul>
+<li><a href="https://epigenomesportal.ca/tracks/CEEHRC/hg38/69052.CEEHRC.CEMT0035.H3K4me1.signal_unstranded.bigWig" class="uri">https://epigenomesportal.ca/tracks/CEEHRC/hg38/69052.CEEHRC.CEMT0035.H3K4me1.signal_unstranded.bigWig</a></li>
+</ul>
+<ol start="7" style="list-style-type: decimal">
+<li>CEMT Pooled Breast Basal</li>
+</ol>
+<ul>
+<li>~/CourseData/EPI_data/Module1/CHEERC_resources
+<a href="https://epigenomesportal.ca/tracks/CEEHRC/hg38/69057.CEEHRC.CEMT0035.H3K4me3.peak_calls.bigBed" class="uri">https://epigenomesportal.ca/tracks/CEEHRC/hg38/69057.CEEHRC.CEMT0035.H3K4me3.peak_calls.bigBed</a></li>
+</ul>
+<ol start="8" style="list-style-type: decimal">
+<li>CEMT Pooled Breast Basal</li>
+</ol>
+<ul>
+<li><a href="https://epigenomesportal.ca/tracks/CEEHRC/hg38/69055.CEEHRC.CEMT0035.H3K4me3.signal_unstranded.bigWig" class="uri">https://epigenomesportal.ca/tracks/CEEHRC/hg38/69055.CEEHRC.CEMT0035.H3K4me3.signal_unstranded.bigWig</a></li>
+</ul>
+<ol start="9" style="list-style-type: decimal">
+<li>CEMT Pooled Breast Basal</li>
+</ol>
+<ul>
+<li><a href="https://epigenomesportal.ca/tracks/CEEHRC/hg38/69070.CEEHRC.CEMT0035.Input.signal_unstranded.bigWig" class="uri">https://epigenomesportal.ca/tracks/CEEHRC/hg38/69070.CEEHRC.CEMT0035.Input.signal_unstranded.bigWig</a></li>
+</ul>
+<ol start="10" style="list-style-type: decimal">
+<li>CEMT Pooled Breast Stromal</li>
+</ol>
+<ul>
+<li>~/CourseData/EPI_data/Module1/CHEERC_resources</li>
+<li><a href="https://epigenomesportal.ca/tracks/CEEHRC/hg38/69088.CEEHRC.CEMT0036.H3K27ac.peak_calls.bigBed" class="uri">https://epigenomesportal.ca/tracks/CEEHRC/hg38/69088.CEEHRC.CEMT0036.H3K27ac.peak_calls.bigBed</a></li>
+</ul>
+<ol start="11" style="list-style-type: decimal">
+<li>CEMT Pooled Breast Stromal</li>
+</ol>
+<ul>
+<li><a href="https://epigenomesportal.ca/tracks/CEEHRC/hg38/69086.CEEHRC.CEMT0036.H3K27ac.signal_unstranded.bigWig" class="uri">https://epigenomesportal.ca/tracks/CEEHRC/hg38/69086.CEEHRC.CEMT0036.H3K27ac.signal_unstranded.bigWig</a></li>
+</ul>
+<ol start="12" style="list-style-type: decimal">
+<li>CEMT Pooled Breast Stromal</li>
+</ol>
+<ul>
+<li>~/CourseData/EPI_data/Module1/CHEERC_resources</li>
+<li><a href="https://epigenomesportal.ca/tracks/CEEHRC/hg38/69082.CEEHRC.CEMT0036.H3K27me3.peak_calls.bigBed" class="uri">https://epigenomesportal.ca/tracks/CEEHRC/hg38/69082.CEEHRC.CEMT0036.H3K27me3.peak_calls.bigBed</a></li>
+</ul>
+<ol start="13" style="list-style-type: decimal">
+<li>CEMT Pooled Breast Stromal</li>
+</ol>
+<ul>
+<li><a href="https://epigenomesportal.ca/tracks/CEEHRC/hg38/69080.CEEHRC.CEMT0036.H3K27me3.signal_unstranded.bigWig" class="uri">https://epigenomesportal.ca/tracks/CEEHRC/hg38/69080.CEEHRC.CEMT0036.H3K27me3.signal_unstranded.bigWig</a></li>
+</ul>
+<ol start="14" style="list-style-type: decimal">
+<li>CEMT Pooled Breast Stromal</li>
+</ol>
+<ul>
+<li>~/CourseData/EPI_data/Module1/CHEERC_resources</li>
+<li><a href="https://epigenomesportal.ca/tracks/CEEHRC/hg38/69073.CEEHRC.CEMT0036.H3K4me1.peak_calls.bigBed" class="uri">https://epigenomesportal.ca/tracks/CEEHRC/hg38/69073.CEEHRC.CEMT0036.H3K4me1.peak_calls.bigBed</a></li>
+</ul>
+<ol start="15" style="list-style-type: decimal">
+<li>CEMT Pooled Breast Stromal</li>
+</ol>
+<ul>
+<li><a href="https://epigenomesportal.ca/tracks/CEEHRC/hg38/69071.CEEHRC.CEMT0036.H3K4me1.signal_unstranded.bigWig" class="uri">https://epigenomesportal.ca/tracks/CEEHRC/hg38/69071.CEEHRC.CEMT0036.H3K4me1.signal_unstranded.bigWig</a></li>
+</ul>
+<ol start="16" style="list-style-type: decimal">
+<li>CEMT Pooled Breast Stromal</li>
+</ol>
+<ul>
+<li>~/CourseData/EPI_data/Module1/CHEERC_resources</li>
+<li><a href="https://epigenomesportal.ca/tracks/CEEHRC/hg38/69076.CEEHRC.CEMT0036.H3K4me3.peak_calls.bigBed" class="uri">https://epigenomesportal.ca/tracks/CEEHRC/hg38/69076.CEEHRC.CEMT0036.H3K4me3.peak_calls.bigBed</a></li>
+</ul>
+<ol start="17" style="list-style-type: decimal">
+<li>CEMT Pooled Breast Stromal</li>
+</ol>
+<ul>
+<li><a href="https://epigenomesportal.ca/tracks/CEEHRC/hg38/69074.CEEHRC.CEMT0036.H3K4me3.signal_unstranded.bigWig" class="uri">https://epigenomesportal.ca/tracks/CEEHRC/hg38/69074.CEEHRC.CEMT0036.H3K4me3.signal_unstranded.bigWig</a></li>
+</ul>
+<ol start="18" style="list-style-type: decimal">
+<li>CEMT Pooled Breast Stromal</li>
+</ol>
+<ul>
+<li><a href="https://epigenomesportal.ca/tracks/CEEHRC/hg38/69089.CEEHRC.CEMT0036.Input.signal_unstranded.bigWig" class="uri">https://epigenomesportal.ca/tracks/CEEHRC/hg38/69089.CEEHRC.CEMT0036.Input.signal_unstranded.bigWig</a></li>
+</ul>
+<ol start="19" style="list-style-type: decimal">
+<li>CEMT Pooled Breast Luminal</li>
+</ol>
+<ul>
+<li>~/CourseData/EPI_data/Module1/CHEERC_resources</li>
+<li><a href="https://epigenomesportal.ca/tracks/CEEHRC/hg38/69107.CEEHRC.CEMT0037.H3K27ac.peak_calls.bigBed" class="uri">https://epigenomesportal.ca/tracks/CEEHRC/hg38/69107.CEEHRC.CEMT0037.H3K27ac.peak_calls.bigBed</a></li>
+</ul>
+<ol start="20" style="list-style-type: decimal">
+<li>CEMT Pooled Breast Luminal</li>
+</ol>
+<ul>
+<li><a href="https://epigenomesportal.ca/tracks/CEEHRC/hg38/69105.CEEHRC.CEMT0037.H3K27ac.signal_unstranded.bigWig" class="uri">https://epigenomesportal.ca/tracks/CEEHRC/hg38/69105.CEEHRC.CEMT0037.H3K27ac.signal_unstranded.bigWig</a></li>
+</ul>
+<ol start="21" style="list-style-type: decimal">
+<li>CEMT Pooled Breast Luminal</li>
+</ol>
+<ul>
+<li>~/CourseData/EPI_data/Module1/CHEERC_resources</li>
+<li><a href="https://epigenomesportal.ca/tracks/CEEHRC/hg38/69101.CEEHRC.CEMT0037.H3K27me3.peak_calls.bigBed" class="uri">https://epigenomesportal.ca/tracks/CEEHRC/hg38/69101.CEEHRC.CEMT0037.H3K27me3.peak_calls.bigBed</a></li>
+</ul>
+<ol start="22" style="list-style-type: decimal">
+<li>CEMT Pooled Breast Luminal</li>
+</ol>
+<ul>
+<li><a href="https://epigenomesportal.ca/tracks/CEEHRC/hg38/69099.CEEHRC.CEMT0037.H3K27me3.signal_unstranded.bigWig" class="uri">https://epigenomesportal.ca/tracks/CEEHRC/hg38/69099.CEEHRC.CEMT0037.H3K27me3.signal_unstranded.bigWig</a></li>
+</ul>
+<ol start="23" style="list-style-type: decimal">
+<li>CEMT Pooled Breast Luminal</li>
+</ol>
+<ul>
+<li>~/CourseData/EPI_data/Module1/CHEERC_resources</li>
+<li><a href="https://epigenomesportal.ca/tracks/CEEHRC/hg38/69092.CEEHRC.CEMT0037.H3K4me1.peak_calls.bigBed" class="uri">https://epigenomesportal.ca/tracks/CEEHRC/hg38/69092.CEEHRC.CEMT0037.H3K4me1.peak_calls.bigBed</a></li>
+</ul>
+<ol start="24" style="list-style-type: decimal">
+<li>CEMT Pooled Breast Luminal</li>
+</ol>
+<ul>
+<li><a href="https://epigenomesportal.ca/tracks/CEEHRC/hg38/69090.CEEHRC.CEMT0037.H3K4me1.signal_unstranded.bigWig" class="uri">https://epigenomesportal.ca/tracks/CEEHRC/hg38/69090.CEEHRC.CEMT0037.H3K4me1.signal_unstranded.bigWig</a></li>
+</ul>
+<ol start="25" style="list-style-type: decimal">
+<li>CEMT Pooled Breast Luminal</li>
+</ol>
+<ul>
+<li>~/CourseData/EPI_data/Module1/CHEERC_resources</li>
+<li><a href="https://epigenomesportal.ca/tracks/CEEHRC/hg38/69095.CEEHRC.CEMT0037.H3K4me3.peak_calls.bigBed" class="uri">https://epigenomesportal.ca/tracks/CEEHRC/hg38/69095.CEEHRC.CEMT0037.H3K4me3.peak_calls.bigBed</a></li>
+</ul>
+<ol start="26" style="list-style-type: decimal">
+<li>CEMT Pooled Breast Luminal</li>
+</ol>
+<ul>
+<li><a href="https://epigenomesportal.ca/tracks/CEEHRC/hg38/69093.CEEHRC.CEMT0037.H3K4me3.signal_unstranded.bigWig" class="uri">https://epigenomesportal.ca/tracks/CEEHRC/hg38/69093.CEEHRC.CEMT0037.H3K4me3.signal_unstranded.bigWig</a></li>
+</ul>
+<ol start="27" style="list-style-type: decimal">
+<li>CEMT Pooled Breast Luminal</li>
+</ol>
+<ul>
+<li><a href="https://epigenomesportal.ca/tracks/CEEHRC/hg38/69108.CEEHRC.CEMT0037.Input.signal_unstranded.bigWig" class="uri">https://epigenomesportal.ca/tracks/CEEHRC/hg38/69108.CEEHRC.CEMT0037.Input.signal_unstranded.bigWig</a></li>
+</ul>
+<ol start="28" style="list-style-type: decimal">
+<li>CEMT Pooled Breast Luminal Progenitor</li>
+</ol>
+<ul>
+<li>~/CourseData/EPI_data/Module1/CHEERC_resources</li>
+<li><a href="https://epigenomesportal.ca/tracks/CEEHRC/hg38/69126.CEEHRC.CEMT0038.H3K27ac.peak_calls.bigBed" class="uri">https://epigenomesportal.ca/tracks/CEEHRC/hg38/69126.CEEHRC.CEMT0038.H3K27ac.peak_calls.bigBed</a></li>
+</ul>
+<ol start="29" style="list-style-type: decimal">
+<li>CEMT Pooled Breast Luminal Progenitor</li>
+</ol>
+<ul>
+<li><a href="https://epigenomesportal.ca/tracks/CEEHRC/hg38/69124.CEEHRC.CEMT0038.H3K27ac.signal_unstranded.bigWig" class="uri">https://epigenomesportal.ca/tracks/CEEHRC/hg38/69124.CEEHRC.CEMT0038.H3K27ac.signal_unstranded.bigWig</a></li>
+</ul>
+<ol start="30" style="list-style-type: decimal">
+<li>CEMT Pooled Breast Luminal Progenitor</li>
+</ol>
+<ul>
+<li>~/CourseData/EPI_data/Module1/CHEERC_resources</li>
+<li><a href="https://epigenomesportal.ca/tracks/CEEHRC/hg38/69120.CEEHRC.CEMT0038.H3K27me3.peak_calls.bigBed" class="uri">https://epigenomesportal.ca/tracks/CEEHRC/hg38/69120.CEEHRC.CEMT0038.H3K27me3.peak_calls.bigBed</a></li>
+</ul>
+<ol start="31" style="list-style-type: decimal">
+<li>CEMT Pooled Breast Luminal Progenitor</li>
+</ol>
+<ul>
+<li><a href="https://epigenomesportal.ca/tracks/CEEHRC/hg38/69118.CEEHRC.CEMT0038.H3K27me3.signal_unstranded.bigWig" class="uri">https://epigenomesportal.ca/tracks/CEEHRC/hg38/69118.CEEHRC.CEMT0038.H3K27me3.signal_unstranded.bigWig</a></li>
+</ul>
+<ol start="32" style="list-style-type: decimal">
+<li>CEMT Pooled Breast Luminal Progenitor</li>
+</ol>
+<ul>
+<li>~/CourseData/EPI_data/Module1/CHEERC_resources</li>
+<li><a href="https://epigenomesportal.ca/tracks/CEEHRC/hg38/69111.CEEHRC.CEMT0038.H3K4me1.peak_calls.bigBed" class="uri">https://epigenomesportal.ca/tracks/CEEHRC/hg38/69111.CEEHRC.CEMT0038.H3K4me1.peak_calls.bigBed</a></li>
+</ul>
+<ol start="33" style="list-style-type: decimal">
+<li>CEMT Pooled Breast Luminal Progenitor</li>
+</ol>
+<ul>
+<li><a href="https://epigenomesportal.ca/tracks/CEEHRC/hg38/69109.CEEHRC.CEMT0038.H3K4me1.signal_unstranded.bigWig" class="uri">https://epigenomesportal.ca/tracks/CEEHRC/hg38/69109.CEEHRC.CEMT0038.H3K4me1.signal_unstranded.bigWig</a></li>
+</ul>
+<ol start="34" style="list-style-type: decimal">
+<li>CEMT Pooled Breast Luminal Progenitor</li>
+</ol>
+<ul>
+<li>~/CourseData/EPI_data/Module1/CHEERC_resources</li>
+<li><a href="https://epigenomesportal.ca/tracks/CEEHRC/hg38/69114.CEEHRC.CEMT0038.H3K4me3.peak_calls.bigBed" class="uri">https://epigenomesportal.ca/tracks/CEEHRC/hg38/69114.CEEHRC.CEMT0038.H3K4me3.peak_calls.bigBed</a></li>
+</ul>
+<ol start="35" style="list-style-type: decimal">
+<li>CEMT Pooled Breast Luminal Progenitor</li>
+</ol>
+<ul>
+<li><a href="https://epigenomesportal.ca/tracks/CEEHRC/hg38/69112.CEEHRC.CEMT0038.H3K4me3.signal_unstranded.bigWig" class="uri">https://epigenomesportal.ca/tracks/CEEHRC/hg38/69112.CEEHRC.CEMT0038.H3K4me3.signal_unstranded.bigWig</a></li>
+</ul>
+<ol start="36" style="list-style-type: decimal">
+<li>CEMT Pooled Breast Luminal Progenitor</li>
+</ol>
+<ul>
+<li><a href="https://epigenomesportal.ca/tracks/CEEHRC/hg38/69127.CEEHRC.CEMT0038.Input.signal_unstranded.bigWig" class="uri">https://epigenomesportal.ca/tracks/CEEHRC/hg38/69127.CEEHRC.CEMT0038.Input.signal_unstranded.bigWig</a></li>
+</ul>
+</div>
+</div>
+<div id="module-1.-bwa-alignment-bam-post-processing" class="section level3 hasAnchor">
+<h3>Module 1. BWA Alignment + BAM Post-processing<a href="module-1-introduction-to-chip-sequencing-and-analysis.html#module-1.-bwa-alignment-bam-post-processing" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>Have a genome reference file ready (DONE)</li>
+<li>Index genome reference file (DONE)</li>
+<li>Run quality Check</li>
+<li>Run alignment</li>
+<li>Coordinate Sort alignment File</li>
+<li>Duplicate marking alignment</li>
+<li>Flagstats</li>
+<li>Clean up</li>
+</ol>
+<div id="setup" class="section level4 hasAnchor">
+<h4>Setup<a href="module-1-introduction-to-chip-sequencing-and-analysis.html#setup" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<pre><code>mkdir ~/workspace/{alignments,fastqc}</code></pre>
+<div id="make-a-reference-directory-and-download-appropriate-fasta-reference-httpshgdownload.cse.ucsc.edugoldenpath-httpshgdownload.soe.ucsc.edugoldenpathhg38bigzipshg38.fa.gz.-for-the-live-tutorial-this-step-was-done-for-you.-we-will-be-using-a-shortened-version-containining-only-chr19" class="section level5 hasAnchor">
+<h5>1. Make a reference directory and download appropriate fasta reference @ <a href="https://hgdownload.cse.ucsc.edu/goldenpath/" class="uri">https://hgdownload.cse.ucsc.edu/goldenpath/</a> (<a href="https://hgdownload.soe.ucsc.edu/goldenPath/hg38/bigZips/hg38.fa.gz" class="uri">https://hgdownload.soe.ucsc.edu/goldenPath/hg38/bigZips/hg38.fa.gz</a>). For the live tutorial this step was done for you. We will be using a shortened version containining only chr19<a href="module-1-introduction-to-chip-sequencing-and-analysis.html#make-a-reference-directory-and-download-appropriate-fasta-reference-httpshgdownload.cse.ucsc.edugoldenpath-httpshgdownload.soe.ucsc.edugoldenpathhg38bigzipshg38.fa.gz.-for-the-live-tutorial-this-step-was-done-for-you.-we-will-be-using-a-shortened-version-containining-only-chr19" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Code:</p>
+<pre><code>mkdir ~/CourseData/BWA_index
+wget https://hgdownload.soe.ucsc.edu/goldenPath/hg38/bigZips/hg38.fa.gz -O ~/CourseData/BWA_index/
+gunzip ~/CourseData/EPI_data/Module1/BWA_index/hg38.fa.gz</code></pre>
+</div>
+<div id="index-fasta-using-bwa.-for-the-live-tutorial-this-step-was-done-for-you." class="section level5 hasAnchor">
+<h5>2 .Index Fasta using BWA. For the live tutorial, this step was done for you.<a href="module-1-introduction-to-chip-sequencing-and-analysis.html#index-fasta-using-bwa.-for-the-live-tutorial-this-step-was-done-for-you." class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Code:</p>
+<pre><code>bwa index ~/CourseData/EPI_data/Module1/BWA_index/chr19.hg38_no_alt.fa
+ls ~/CourseData/EPI_data/Module1/BWA_index/ -lth</code></pre>
+<p>Output:</p>
+<pre><code>total 155M
+8126488 -rw-rw-r-- 1 ubuntu ubuntu 28M Sep  7 19:22 chr19.hg38_no_alt.fa.sa
+8126486 -rw-rw-r-- 1 ubuntu ubuntu 108 Sep  7 19:22 chr19.hg38_no_alt.fa.amb
+8126485 -rw-rw-r-- 1 ubuntu ubuntu 153 Sep  7 19:22 chr19.hg38_no_alt.fa.ann
+8126484 -rw-rw-r-- 1 ubuntu ubuntu 14M Sep  7 19:22 chr19.hg38_no_alt.fa.pac
+8126487 -rw-rw-r-- 1 ubuntu ubuntu 56M Sep  7 19:22 chr19.hg38_no_alt.fa.bwt
+8126483 -rw-rw-r-- 1 ubuntu ubuntu 57M Sep  7 18:36 chr19.hg38_no_alt.fa</code></pre>
+</div>
+<div id="run-quality-check" class="section level5 hasAnchor">
+<h5>3. Run Quality Check<a href="module-1-introduction-to-chip-sequencing-and-analysis.html#run-quality-check" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Code:</p>
+<pre><code>mkdir -p ~/workspace/fastqc
+fastq_file_A=~/CourseData/EPI_data/Module1/MCF10A_resources/R1_input.fastq.gz
+fastq_file_B=~/CourseData/EPI_data/Module1/MCF10A_resources/R1_h3k27ac.fastq.gz
+fastqc ${fastq_file_A} -o ~/workspace/fastqc
+fastqc ${fastq_file_B} -o ~/workspace/fastqc</code></pre>
+<p>Output:</p>
+<pre><code>Started analysis of R1_input.fastq.gz
+Approx 5% complete for R1_input.fastq.gz
+Approx 10% complete for R1_input.fastq.gz
+Approx 15% complete for R1_input.fastq.gz
+Approx 20% complete for R1_input.fastq.gz
+Approx 25% complete for R1_input.fastq.gz
+Approx 30% complete for R1_input.fastq.gz
+Approx 35% complete for R1_input.fastq.gz
+Approx 40% complete for R1_input.fastq.gz
+Approx 45% complete for R1_input.fastq.gz
+Approx 50% complete for R1_input.fastq.gz
+Approx 55% complete for R1_input.fastq.gz
+Approx 60% complete for R1_input.fastq.gz
+Approx 65% complete for R1_input.fastq.gz
+Approx 70% complete for R1_input.fastq.gz
+Approx 75% complete for R1_input.fastq.gz
+Approx 80% complete for R1_input.fastq.gz
+Approx 85% complete for R1_input.fastq.gz
+Approx 90% complete for R1_input.fastq.gz
+Approx 95% complete for R1_input.fastq.gz
+Analysis complete for R1_input.fastq.gz</code></pre>
+<p>Comment:</p>
+<pre><code>Check out the HTML file produced!
+Note the GC distribution of Input VS H3K27ac</code></pre>
+<p><img src="img/input.png" /></p>
+<p>H3K27ac</p>
+<p><img src="img/h3k27ac.png" /></p>
+</div>
+<div id="run-alignment" class="section level5 hasAnchor">
+<h5>4. Run Alignment<a href="module-1-introduction-to-chip-sequencing-and-analysis.html#run-alignment" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Code:</p>
+<pre><code>mkdir -p ~/workspace/alignments
+ref=~/CourseData/EPI_data/Module1/BWA_index/chr19.hg38_no_alt.fa
+read1=~/CourseData/EPI_data/Module1/MCF10A_resources/R1_input.fastq.gz
+read2=~/CourseData/EPI_data/Module1/MCF10A_resources/R2_input.fastq.gz
+sample=MCF10A_input_chr19
+bwa mem -M -t 4 ${ref} ${read1} ${read2} 2&gt;~/workspace/alignments/alignment.log | samtools view -hbS -o ~/workspace/alignments/${sample}.bam</code></pre>
+<p>Output:</p>
+<p><em>Check log</em></p>
+<p>Code Breakdown:</p>
+<pre><code>mkdir -p ~/workspace/alignments # Make working directory
+ref=~/CourseData/EPI_data/Module1/BWA_index/chr19.hg38_no_alt.fa # Preset set variables
+read1=~/CourseData/EPI_data/Module1/MCF10A_resources/R1_input.fastq.gz
+read2=~/CourseData/EPI_data/Module1/MCF10A_resources/R2_input.fastq.gz
+sample=MCF10A_input_chr19
+
+bwa mem -M -t 4 ${ref} ${read1} ${read2} 2&gt;~/workspace/alignments/alignment.log # Alignment step {&quot;-t 2&quot;:Peform alignment using four threads. Our tutorial uses m5.xlarge therefore provides four cores,&quot;-M&quot;:mark short split hits as secondary}
+| samtools view -hbS -o ~/workspace/alignments/${sample}.bam # Converts SAM to BAM format {&quot;h&quot;:Include Header, &quot;b&quot;: output BAM, &quot;S&quot;:detect input format}</code></pre>
+</div>
+<div id="coordinate-sort-alignment-file" class="section level5 hasAnchor">
+<h5>5. Coordinate Sort Alignment File<a href="module-1-introduction-to-chip-sequencing-and-analysis.html#coordinate-sort-alignment-file" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Code:</p>
+<pre><code>sample=MCF10A_input_chr19
+samtools sort  ~/workspace/alignments/${sample}.bam -o ~/workspace/alignments/${sample}.sorted.bam
+samtools view ~/workspace/alignments/${sample}.bam | head
+samtools view ~/workspace/alignments/${sample}.sorted.bam | head</code></pre>
+<p>Output:
+Output from ~/workspace/alignments/MCF10A_input_chr19.bam:</p>
+<pre><code>HS10_346:2:1101:3349:1883       83      chr19   49469101        60      75M     =       49468882        -294    CTTGACAAGAAGGTTTTGAGGCCCCGCCCTTAGGACTCAAGTTACTAAGGAAGAGGCTGTCCTTAGCAACAGGGN     DEEDDDDDDDDDDDDDDDDDDDFJJJJJJJJJJJJJJJJIIIIIIJJJJJJJJJJJJJIHJJHHHHHFFFFD=1#       NM:i:1  MD:Z:74G0       MC:Z:75M        AS:i:74 XS:i:0
+HS10_346:2:1101:3349:1883       163     chr19   49468882        60      75M     =       49469101        294     CCAGCAGGCCTGGCCAACGTGGTGACAGGAGACCGGGACCATCTGACCCGCTGCCTGGCCTTGCACCAAGACGTC     CCCFFFFFGHGHGIJJJJJFHIEHIIJJJICHHIIGGIJGIJJIJJJJHGBEDDEEDDDDDDDCCDCDDDDDDBD       NM:i:0  MD:Z:75 MC:Z:75M        AS:i:75 XS:i:0
+HS10_346:2:1101:3408:1953       83      chr19   23790237        60      75M     =       23790104        -208    TCCACCCGCCTAGGCTTCCCAAAGTGGTGGGATTACAGACGTGAGCCACTGGACCCGGCCTGATTTTCTCTTGAN     BDB9DDDEEFFFFFHHHHEJJJJJJJJIJJJJJJGIJJJIIJJJJJHGJJJIHJJJJJJJJJHHHHHFFFFD=1#       NM:i:2  MD:Z:47G26A0    MC:Z:5M1I69M    AS:i:69 XS:i:35
+HS10_346:2:1101:3408:1953       163     chr19   23790104        60      5M1I69M =       23790237        208     ATTCTCCTGTCTCAGTCTCCTGAGTAGCTGGGATTACAGGCGCCCGCCACTGTGCCCGGCTACTTTTTGTATTTT     CCCFFFFFDFFHHJJ?FHGIJJEHEFHIIGJJEGGIIFIIGHIJIJJJJIFIGJJIGGHEDEFEFEEED?DCFEE       NM:i:1  MD:Z:74 MC:Z:75M        AS:i:69 XS:i:50
+HS10_346:2:1101:11940:1853      99      chr19   42651286        60      75M     =       42651536        325     NTTTCTCCATCAACTTAGCTGGCAGCTCCTGTCCCCAGCAGCATCAGAGGCCCCATGAAAAGAGCTCCAGCAGGG     #1=DFFFFHHHHHJJJJJJJJJIJGIJJJIIIIJJJJIJJJJJJJJJJJJJJJJJJIJIJJJJJHHHHHFFFFFD       NM:i:1  MD:Z:0G74       MC:Z:75M        AS:i:74 XS:i:31
+HS10_346:2:1101:11940:1853      147     chr19   42651536        60      75M     =       42651286        -325    GGGAGGAGAGAAGGGAACTGTAGGCCAATGGCTTTATTGGGTCTAGGGTGTTATTGACAGGTTTCCAGAAGGGAG     HHHHJIJJJJJJIJIGHJJJJJJIHJJJJJIJJJJJJJJJJIGIJJJJJIHFCCCJJJJJJJHHHHHFFFFFCCC       NM:i:0  MD:Z:75 MC:Z:75M        AS:i:75 XS:i:0
+HS10_346:2:1101:20208:1926      83      chr19   5876554 60      75M     =       5876421 -208    GCGGTGAGGCCATCTATGCCCCTCGTTGGGGTCCTGGTCTTCATTGGACACCCCAGCTCCTCCCTCAGCCTGGGN     DDDDDDDDDDDEDDDDDDDDFFHHHJJJJJJJJJJJJJJJJJIJJIHDD:JJJJJJJJJJJJHHHHHFFFFD=4#       NM:i:2  MD:Z:15G58C0    MC:Z:32M1D24M2I17M      AS:i:69 XS:i:24
+HS10_346:2:1101:20208:1926      163     chr19   5876421 60      32M1D24M2I17M   =       5876554 208     GGGGCTCTCTTGCCCTCCCAGCCAGATCATCCTTCTACTGGCTCCTCCAACCACCCCTGTGCCCCTGATTCTAGG     CCCFFFFFHHHHHJJJJJIJJJJJJJJJJIJIIJIJJJJJIJJJICHIGHHHIIJJJCGEGGHHH=DBEFFDDEE       NM:i:3  MD:Z:32^T41     MC:Z:75M        AS:i:58 XS:i:0
+HS10_346:2:1101:21139:1859      83      chr19   41375797        60      75M     =       41375616        -256    AGCAAGACCCCGTTTTTTAAAAAATAATAATAAAAAAAAAATCCGCCGGGCGCGGTTGCTCACGCCTGTAATCCN     ####################################################################?&lt;@?70#       NM:i:4  MD:Z:13C29T12G17T0      MC:Z:75M        AS:i:59 XS:i:28
+HS10_346:2:1101:21139:1859      163     chr19   41375616        60      75M     =       41375797        256     AACAAGCCAACACGCCTTCAGCACTCCTCCGCAAAAAAACACCCCTAAACAAAATAGGCCAGGCGCGGTGACTCA     :+:=?;+&lt;&lt;A7=&lt;)&lt;1+1+22?@3@B&gt;B&gt;30?A04==AA####################################       NM:i:2  MD:Z:13C31A29   MC:Z:75M        AS:i:65 XS:i:24</code></pre>
+<p>Output from ~/workspace/alignments/$MCF10A_input_chr19.sorted.bam:</p>
+<pre><code>HS10_346:2:1304:19247:16557     117     chr19   60146   0       *       =       60146   0       GTTGAGTAATTGCTGAGATGGGCAGTAGAGATGCTCAGGTCTGTGGTCCCTTTCCATCCCCACTTGATCTATTTT     ###########################################################################       MC:Z:54M21S     AS:i:0  XS:i:0
+HS10_346:2:1304:19247:16557     185     chr19   60146   60      54M21S  =       60146   0       TACAAGGATAATCTGACCTGCAGGGTCGAGGAGTTGACGGTGCTGAGTTCCCTGGATGGCACCAAGATCGGCCCT     DCCDDDCCCDCDECEEEFFFFHGHHIIHFGHIGGEIFAHCIEHGGIGHGHEHEDGEIIIHFG?HFFDDFFFD@@@       NM:i:0  MD:Z:54 AS:i:54 XS:i:0
+HS10_346:2:1314:2495:92223      163     chr19   60167   60      75M     =       60313   221     AGGGTCAAGGAGTTGACGGTGCTGAGTTCCCTGCACTCTCAGTAGGGACAGGCCCTATGCTGCCACCTGTACATG     @@?DDDDDHHHHFGHJIJJFEHJJJJEIIIGHIJJJJGEIBHHGIJJIIJJJJJJJJIJJIJJJHGHHFDDFCEF       NM:i:1  MD:Z:6G68       MC:Z:75M        AS:i:70 XS:i:0
+HS10_346:2:1207:4332:57794      99      chr19   60172   60      75M     =       60350   253     CGAGGAGTTGACGGTGCTGAGTTCCCTGCACTCTCAGTAGGGACAGGCCCTATGCTGCCACCTGTACATGCTATC     @C@FFDFDFFFHHIHIIJHHGGIIJGIEEHIJIJJJIJJIJJGIGHIHIHHJJJJJJJJIHHHEEHHHHFFFFFF       NM:i:0  MD:Z:75 MC:Z:75M        AS:i:75 XS:i:0
+HS10_346:2:2315:10492:97635     121     chr19   60173   60      75M     =       60173   0       GAGGAGTGGACGGTGCTGAGTTCCCTGCTCTCTCAGTAGGGACAGGCCCTATGCTGCCACCTGTACATGCTATCA     ###########################################################################       NM:i:3  MD:Z:7T20A45T0  AS:i:64 XS:i:0
+HS10_346:2:2315:10492:97635     181     chr19   60173   0       *       =       60173   0       AAAAATCGAAAATACTTTTAACAATTTGTATTTGATTTATAACTTTTAAACATTTTTATAATGACATTTAAAAAA     IJIGIHFCBHEC=8GHJIIIHIEEEIHDGGHGIGIGGHGEEEGCIHHAC?HEGJJGJIIGHBHDDHHFFFFD@@@       MC:Z:75M        AS:i:0  XS:i:0
+HS10_346:2:1314:17241:18282     117     chr19   60211   0       *       =       60211   0       CTCTGTGATCTTCTCCATGGCAGGATCTCCCAGCAGGTAAAGCAGAGCCGGAGCCAGGTGCAGGCCATTGGAGAG     @CCD@@EEEHFHEA=HGGC@CF7=@@F;HF&lt;CCBBDDB9DB@&lt;&gt;GG@E@HEIHACHDDHFDADF&gt;HBDDDDB?@@       MC:Z:75M        AS:i:0  XS:i:0
+HS10_346:2:1314:17241:18282     185     chr19   60211   60      75M     =       60211   0       GGGACAGGCCCTATGCTGCCACCTGTACATGCTATCTGAAGGACAGCCTCCAGGGCACACAGAGGATGGTATTTA     ##AA=5;;BA;BB=(7.8/**)A7=909&lt;A??BB????*A:7@11)22+3&lt;3?3,33&lt;2&lt;=?CA&lt;,C7?A?===:       NM:i:0  MD:Z:75 AS:i:75 XS:i:0
+HS10_346:2:1201:2781:75049      99      chr19   60221   60      75M     =       60484   338     CTATGCTGCCACCTGTACATGCTATCTGAAGGACAGCCTCCAGGGCACACAGAGGATGGTATTTACACATGCACA     CCCFFFFFHGGHHJJIJJJJJJJJJJJJJJJJJJJIIJJJJJGIJIIJJJJJIJJJJJJ@GIIJJJJIJHHHHHF       NM:i:0  MD:Z:75 MC:Z:75M        AS:i:75 XS:i:0
+HS10_346:2:1314:2495:92223      83      chr19   60313   60      75M     =       60167   -221    CAAGCACTTCACAACCCCTCATGATCACGTGCAGCAGACAAAGTGGCCTCTGCAGAGGGGGAACGGAGACCGGAG     DCADDDDEEDCDFDHIIIEJJJJIJIHFHGGIEHGIHIIJJJJJJJIJIGIJIIJJJJJJIHFGHHHFDFFFCCC       NM:i:1  MD:Z:41T33      MC:Z:75M        AS:i:70 XS:i:0</code></pre>
+<p>Code Breakdown:</p>
+<pre><code>Coordinate sorts</code></pre>
+<p>Comment:</p>
+<pre><code>Take a look at the coordinate sorted bam vs original. When we view, notice the coordinates in the sorted bam were altered</code></pre>
+</div>
+<div id="duplicate-marking-alignment" class="section level5 hasAnchor">
+<h5>6. Duplicate Marking Alignment<a href="module-1-introduction-to-chip-sequencing-and-analysis.html#duplicate-marking-alignment" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Code:</p>
+<pre><code>sample=MCF10A_input_chr19
+java -jar /usr/local/picard/picard.jar MarkDuplicates I=~/workspace/alignments/${sample}.sorted.bam O=~/workspace/alignments/${sample}.dup_marked.sorted.bam M=~/workspace/alignments/${sample}.dup_marked.output.log ASSUME_SORTED=TRUE VALIDATION_STRINGENCY=LENIENT &gt; ~/workspace/alignments/${sample}.dup_marked.error.log</code></pre>
+<p>Code Breakdown:</p>
+<pre><code>java -jar \ # Requires java to intepret
+/usr/local/picard/picard.jar \ #Point to toolkit
+MarkDuplicates \  #Specify function from toolkit
+I=~/workspace/alignments/${sample}.sorted.bam \ #Input
+O=~/workspace/alignments/${sample}.dup_marked.sorted.bam \ #output
+M=~/workspace/alignments/${sample}.dup_marked.output.log \ #Work log
+ASSUME_SORTED=TRUE \ #B/C we already sorted this will be true
+VALIDATION_STRINGENCY=LENIENT \ #Emit warnings but keep going if possible
+&gt; ~/workspace/alignments/{sample}.dup_marked.error.log</code></pre>
+<p>Output:</p>
+<pre><code>See log. Its a bit long but the breakdown as follows:
+1. A summary of the command used (so we can check the parameters)
+2. A metric rollup equivalent to the flagstat step run later on
+3. A histogram where, Col 1 is expected coverage col 2 is actual
+&quot;In case of many duplicates, the second column will result in much lower values, indicating that sequencing more will not add proportionally to the obtained effective coverage.&quot;
+https://github.com/broadinstitute/picard/issues/917</code></pre>
+</div>
+<div id="flagstats" class="section level5 hasAnchor">
+<h5>7. Flagstats<a href="module-1-introduction-to-chip-sequencing-and-analysis.html#flagstats" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Code:</p>
+<pre><code>sample=MCF10A_input_chr19
+samtools flagstat ~/workspace/alignments/${sample}.dup_marked.sorted.bam &gt; ~/workspace/alignments/${sample}.dup_marked.sorted.flagstat</code></pre>
+<p>Output:</p>
+<pre><code>1726243 + 0 in total (QC-passed reads + QC-failed reads)
+34545 + 0 secondary
+0 + 0 supplementary
+64636 + 0 duplicates
+1545613 + 0 mapped (89.54% : N/A)
+1691698 + 0 paired in sequencing
+845849 + 0 read1
+845849 + 0 read2
+1192976 + 0 properly paired (70.52% : N/A)
+1330944 + 0 with itself and mate mapped
+180124 + 0 singletons (10.65% : N/A)
+0 + 0 with mate mapped to a different chr
+0 + 0 with mate mapped to a different chr (mapQ&gt;=5)</code></pre>
+<p>Comment:</p>
+<pre><code>Run flagstat on MCF10A_input_chr19.sorted.bam. What are the differences?
+Try running the alignment with MCF10A_H3K27ac_chr19!</code></pre>
+</div>
+<div id="clean-up" class="section level5 hasAnchor">
+<h5>8. Clean Up!<a href="module-1-introduction-to-chip-sequencing-and-analysis.html#clean-up" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Code:</p>
+<pre><code>rm ~/workspace/alignments/${sample}.sorted.bam
+rm ~/workspace/alignments/${sample}.bam</code></pre>
+<p>Comment:</p>
+<pre><code>Good practice to remove redundant files</code></pre>
+<div class="callout-green">
+<span class="callout-icon"><i class="fas fa-circle-check" aria-hidden="true"></i></span>
+<div class="callout-content">
+<div class="callout-title-static">
+<p>Lab Completed!</p>
+</div>
+<p>Congratulations! You have completed Lab 1!</p>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="compute-setup.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="module-2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": false,
+    "twitter": false,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/bioinformaticsdotca/EPI_2021/blob/main/010-module-1.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["_main.pdf", "_main.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
+});
+});
+</script>
+
+</body>
+
+</html>

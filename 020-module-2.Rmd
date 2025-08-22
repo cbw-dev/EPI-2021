@@ -2,5 +2,199 @@
 
 ## Lecture
 
+<iframe src="https://drive.google.com/file/d/1OpvvIKXxbpgfROTdQ3aJyUggTa_dGjMU/preview" width="640" height="480" allow="autoplay"></iframe>
 
 ## Lab
+
+### Module 2. Peak Calling
+
+1. Dedup BAM file
+2. Running a peak caller
+3. Remove blacklist regions
+4. Visualization
+
+#### Setup
+```{}
+mkdir ~/workspace/peaks
+samtools index -@4 ~/CourseData/EPI_data/Module1/MCF10A_resources/*.bam
+```
+
+##### 1. Dedup BAM File
+
+Code:
+```{}
+treatment_bam=~/CourseData/EPI_data/Module1/MCF10A_resources/MCF10A_H3K27ac.bam
+treatment_dedup=~/workspace/peaks/MCF10A_H3K27ac.dedup.bam
+samtools view -@4 ${treatment_bam} -bh -q10 -F1028 -o ${treatment_dedup}
+input_bam=~/CourseData/EPI_data/Module1/MCF10A_resources/MCF10A_Input.bam
+input_dedup=~/workspace/peaks/MCF10A_Input.dedup.bam
+samtools view -@4 ${treatment_bam} -bh -q10 -F1028 -o ${treatment_dedup}
+```
+
+Code Breakdown:
+```{}
+samtools view -@4 ${treatment_bam} -bh -q10 -F1028 chr19# {"-F1028": removes reads that unmapped and duplicated,
+"-@4": uses two threads,
+"-bh": outputs in binary,
+"q10": MAPQ must be >=10
+```
+
+Comments:
+```{}
+This step will take a while, copies have been prepared in resources. Smallest file taking 3 minutes. Longest taking 10.
+```
+
+2. Running a Peak Caller
+
+Code:
+```{}
+mkdir -p ~/workspace/peaks
+treatment_frag=~/CourseData/EPI_data/Module1/MCF10A_resources/MCF10A_H3K27ac.dedup.bam
+input_frag=~/CourseData/EPI_data/Module1/MCF10A_resources/MCF10A_Input.dedup.bam
+name=MCF10A_H3K27ac
+
+macs3 callpeak -t ${treatment_frag} -c ${input_frag} -f BAMPE -g hs -n ${name} --keep-dup all --outdir ~/workspace/peaks/ --bdg 1> ~/workspace/peaks/${name}.out.log 2> ~/workspace/peaks/${name}.err.log
+```
+
+Code Breakdown:
+```{}
+macs3 callpeak \ #General purpose peak calling mode
+-t ${treatment_frag} \ #Treatment file, can provide more than one to "pool"
+-c ${input_frag} \ #Control File/Input
+-f BAMPE \ #Instructs MACS2 on what kind of file to expect. Single/Paired-end bed/bam
+-g hs \ #Sets appropriate genome size for background sampling hs=human, mm=humouse
+-n ${name} \ #name
+#-q 0.05 #FDR q value default
+#-broad #"broad mode" for broad marks - stitches small peaks together
+--outdir ~/workspace/peaks/ \ #where to output files otherwise stores in current working directory
+--bdg \ #outputs pileup into bedgraphs
+1> ~/workspace/peaks/${name}.out.log \ #output log
+2>  ~/workspace/peaks/${name}.err.log #error log
+
+cat  ~/workspace/peaks/${name}.err.lo
+```
+
+Comments:
+```{}
+List for common marks but is not exhaustive. Best practice would be to observe trends on genome browser and then decide.
+Narrow Marks:
+H3K27ac
+H3K4me3
+
+Broad Marks:
+H3K27me3
+H3K4me1
+H3K36me3
+H3K36me2
+H3K9me3
+
+Take a look at the err.log we see:
+1. Summary of command (a good way of troubleshooting if the wrong paramters were provided
+2. Progress of loading the two bams
+3. Note the line "mean fragment size is determined as 227.0 bp from treatment"
+```
+
+Output:
+*See logs*
+
+##### 2.  Black List Removal/Inspection
+
+- *2.1 Black list removal*
+
+Code:
+```{}
+blacklist=~/CourseData/EPI_data/Module1/QC_resources/hg38_blacklist.bed
+sample="MCF10A_H3K27ac_peaks"
+bedtools intersect -v -a ~/workspace/peaks/${sample}.narrowPeak -b ${blacklist} > ~/workspace/peaks/${sample}.blacklistRemoved.narrowPeak
+bedtools intersect -u -a ~/workspace/peaks/${sample}.narrowPeak -b ${blacklist} > ~/workspace/peaks/${sample}.blacklist.narrowPeak
+```
+
+Output:
+*No log. Bedtools completes Silently*
+
+- *2.2 NarrowPeak inspection*
+
+Code:
+```{}
+sample="MCF10A_H3K27ac_peaks"
+wc -l ~/workspace/peaks/${sample}.blacklistRemoved.narrowPeak
+head ~/workspace/peaks/${sample}.blacklistRemoved.narrowPeak -n5
+```
+
+Output:
+```{}
+32384 /home/ubuntu/workspace/peaks/MCF10A_H3K27ac_peaks.blacklistRemoved.narrowPeak
+chr1    10003   10467   MCF10A_H3K27ac_peak_1   2160    .       47.2436 221.596 216.028 179
+chr1    17283   17514   MCF10A_H3K27ac_peak_2   27      .       3.9983  5.1706  2.76136 82
+chr1    180312  180997  MCF10A_H3K27ac_peak_3   803     .       28.8766 85.1306 80.3433 461
+chr1    777953  778720  MCF10A_H3K27ac_peak_4   210     .       10.1154 24.4429 21.0334 503
+chr1    778984  779223  MCF10A_H3K27ac_peak_5   44      .       4.87285 7.00538 4.45379 69
+```
+
+Comments:
+```{}
+chromosome name
+peak start
+peak stop
+peak name
+int(-10*log10pvalue)
+N/A
+Fold change at peak summit
+-log10 P-value at Peak
+-log10 Q-value at Peak
+Summit position relative to peak
+```
+
+- **2.3 Quality control via % of reads in key genomic areas**
+
+Code:
+```{}
+sample="MCF10A_H3K27ac"
+query_bam=~/CourseData/EPI_data/Module1/MCF10A_resources/${sample}.bam
+samtools view -@4 -q 10 -F 1028 $query_bam -c
+samtools view -@4 -q 10 -F 1028 $query_bam -L ~/CourseData/EPI_data/Module1/QC_resources/encode_enhancers_liftover.bed -c
+samtools view -@4 -q 10 -F 1028 $query_bam -L ~/workspace/peaks/${sample}_peaks.blacklistRemoved.narrowPeak -c
+```
+
+Output:
+```{}
+19632094
+10752392
+2028377
+```
+
+Comments:
+```{}
+samtools view #Viewing entirety or subset of BAM file
+-q 10 \ #Parsing for reads with 5>=MAPQ
+-F 1028 \ # Remove reads that have the following flags:UNMAP,DUP #https://broadinstitute.github.io/picard/explain-flags.html
+$query_bam \ # Bam of interest
+-c # Count number of reads instead of displaying
+-L # Region of interest. Bed File
+```
+
+Enrichment at key regions:
+
+| **H3K4me1**      | **H3K27me3** | **H3K27ac** | **H3K4me3** |            |
+|------------------|--------------|-------------|-------------|------------|
+| Reads Count      |              |             |             |            |
+| Total            | 71,545,746   | 55,438,916  | 19,632,094  | 26,381,511 |
+| Enhancer         | 48,466,245   | 25,742,977  | 10,752,392  | 12,302,265 |
+| HOX              | 13,866       | 13,085      | 4,504       | 28,674     |
+| TSS              | 7,303,584    | 5,111,631   | 2,702,194   | 18,041,080 |
+| In Peaks         | 27,539,876   | 25,072,097  | 2,028,377   | 20,920,281 |
+|                  |              |             |             |            |
+|                  |              |             |             |            |
+|                  | H3K4me1      | H3K27me3    | H3K27ac     | H3K4me3    |
+| Percent of Total |              |             |             |            |
+| Total            | 100.00       | 100.00      | 100.00      | 100.00     |
+| Enhancer         | 67.74        | 46.43       | 54.77       | 46.63      |
+| HOX              | 0.02         | 0.02        | 0.02        | 0.11       |
+| TSS              | 10.21        | 9.22        | 13.76       | 68.39      |
+| In Peaks         | 38.49        | 45.22       | 10.33       | 79.30      |
+
+:::: {.callout type="green" title="Lab Completed!"}
+
+Congratulations! You have completed Lab 2!
+
+::::
